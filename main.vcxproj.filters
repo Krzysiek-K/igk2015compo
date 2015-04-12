@@ -184,5 +184,8 @@
     <None Include="WorkDir\vector.nut">
       <Filter>Scripts</Filter>
     </None>
+    <None Include="WorkDir\kkgame1.nut">
+      <Filter>Scripts</Filter>
+    </None>
   </ItemGroup>
 </Project>

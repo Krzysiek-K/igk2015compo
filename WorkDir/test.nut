@@ -18,3 +18,6 @@ function frame()
 	set_view(40/2,30/2,30)
 	layer.sprite(texid,0xFFFFFFFF,vec2(40,30)/2,vec2(1,1),time);
 }
+
+
+script_add("kkgame1.nut")
