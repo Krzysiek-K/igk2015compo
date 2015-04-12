@@ -89,6 +89,9 @@
     <ClInclude Include="src\devnut.h">
       <Filter>Squirrel</Filter>
     </ClInclude>
+    <ClInclude Include="src\FmodSound.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="base\cfg_parser.cpp">
@@ -168,6 +171,9 @@
     </ClCompile>
     <ClCompile Include="src\devlayers.cpp">
       <Filter>Squirrel</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FmodSound.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
