@@ -334,6 +334,83 @@ XSQ_REGISTER_FN(draw_line_rep);
 
 
 
+
+// ---------------- API: colisions ----------------
+
+struct ColObject {
+	vec2	bmin;
+	vec2	bmax;
+	int		index;
+};
+
+struct Collision {
+	int		id1;
+	int		id2;
+};
+
+vector<ColObject> colliders;
+vector<Collision> cols;
+int cols_read;
+
+
+/** \brief Reset colision system for a new frame. */
+void col_clear()
+{
+	colliders.clear();
+	cols.clear();
+	cols_read = 0;
+}
+XSQ_REGISTER_FN(col_clear);
+
+/** \brief Add circle to collision system. */
+void col_box(int index,float x1,float y1,float x2,float y2)
+{
+	ColObject c;
+	c.bmin = vec2(x1,y1);
+	c.bmax = vec2(x2,y2);
+	c.index = index;
+	colliders.push_back(c);
+}
+XSQ_REGISTER_FN(col_circle);
+
+/** \brief Compute all collisions. */
+void col_compute()
+{
+	cols.clear();
+	cols_read = 0;
+	for(int i=0;i<colliders.size();i++)
+		for(int j=0;j<colliders.size();j++)
+		{
+			ColObject &a = colliders[i];
+			ColObject &b = colliders[j];
+			if( a.bmax.x < b.bmin.x ) continue;
+			if( a.bmax.y < b.bmin.y ) continue;
+			if( b.bmax.x < a.bmin.x ) continue;
+			if( b.bmax.y < a.bmin.y ) continue;
+			Collision c;
+			c.id1 = i;
+			c.id2 = j;
+			cols.push_back(c);
+		}
+}
+XSQ_REGISTER_FN(col_compute);
+
+/** \brief Get next colision (returns 0/1, sets globals "col_id1" and "col_id2"). */
+int col_getcol()
+{
+	if( cols_read>=cols.size() )
+		return 0;
+	vm.Set("col_id1",cols[cols_read].id1);
+	vm.Set("col_id2",cols[cols_read].id2);
+	cols_read++;
+	return 1;
+}
+XSQ_REGISTER_FN(col_getcol);
+
+
+
+// ---------------- API: input ----------------
+
 /** \brief Get current state of a key. */
 int get_key(int key)
 {

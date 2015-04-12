@@ -140,6 +140,7 @@
       <FileType>Document</FileType>
     </None>
     <None Include="WorkDir\api.nut" />
+    <None Include="WorkDir\entity.nut" />
     <None Include="WorkDir\kkgame1.nut" />
     <None Include="WorkDir\priv.nut" />
     <None Include="WorkDir\test.nut" />

@@ -196,5 +196,8 @@
     <None Include="WorkDir\priv.nut">
       <Filter>Scripts</Filter>
     </None>
+    <None Include="WorkDir\entity.nut">
+      <Filter>Scripts</Filter>
+    </None>
   </ItemGroup>
 </Project>

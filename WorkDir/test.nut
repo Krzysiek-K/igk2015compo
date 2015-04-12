@@ -20,26 +20,7 @@ t_invader	<- tex_load("data/invader.png")
 
 
 
-
-
-// ------------ Entity ------------
-
-tabclass("Entity",null,{
-	pos		= vec2(0,0)
-	size	= vec2(1,1)/2
-	offs	= vec2(0,0)		// object offset from position
-	gfx		= t_invader
-	tick	= function(){}
-})
-
-
-
-function _Entity::Draw()
-{
-	layer.sprite(gfx,0xFFFFFFFF,pos+offs,size,0);
-}
-
-
+script_add("entity.nut")
 
 objects <- []
 
@@ -55,8 +36,8 @@ function frame()
 
 	set_view(40/2,20/2,20)
 
-	foreach(e in objects)	e.tick();
-	foreach(e in objects)	e.Draw();
+	tick_all_objects()
+	draw_all_objects()
 
 //	layer.sprite(texid,0xFFFFFFFF,vec2(40,30)/2,vec2(1,1),time);
 }
