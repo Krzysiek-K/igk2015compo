@@ -4,3 +4,4 @@ Debug
 /Release
 *.opensdf
 /WorkDir/device.cfg
+*.ilk
