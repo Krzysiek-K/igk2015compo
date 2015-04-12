@@ -58,8 +58,8 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR pCmdLine, int nSh
 			vm.Reset();
 		last_reset = reset;
 
-		if(Dev.GetKeyState(VK_LBUTTON))	Dev.SetMouseCapture(true);
-		if(Dev.GetKeyState(VK_ESCAPE))	Dev.SetMouseCapture(false);
+//		if(Dev.GetKeyState(VK_LBUTTON))	Dev.SetMouseCapture(true);
+//		if(Dev.GetKeyState(VK_ESCAPE))	Dev.SetMouseCapture(false);
 		
 		int mice = Dev.GetMiceCount();
 		for(int i=0;i<mice;i++)
