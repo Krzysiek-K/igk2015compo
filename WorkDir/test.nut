@@ -20,4 +20,4 @@ function frame()
 }
 
 
-script_add("kkgame1.nut")
+script_add("priv.nut")
