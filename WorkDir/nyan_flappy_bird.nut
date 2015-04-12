@@ -10,58 +10,88 @@ ScreenBottomY <- 30.0
 
 NyanCatX <- ScreenLeftX+5
 
-obj_nyan_cat <- Entity()
-obj_nyan_cat.pos = vec2(NyanCatX, 10.)
-obj_nyan_cat.gfx = t_nyan_cat
-obj_nyan_cat.size = vec2(2, 1.2)*1.5
-obj_nyan_cat.ob_layer = front_layer
-obj_nyan_cat.pclick <- 0
-obj_nyan_cat.tick = function()
+
+function cat_click()
 {
-	// 32 - space
-	local click = get_key(1);
-	if(click && !pclick)
-		vel = vec2(0,-30)*1.5
+	vel = vec2(0,-30)*1.5
+
+	local sh = Entity()
+	objects.push(sh)
+	sh.pos = realpos 
+	sh.gfx = t_brick 
+	sh.tick = function() { 
+		pos += vec2(50*time_delta,0)
+
+		if (pos.x > 50)
+			Remove() 
+	}
+	sh.collide = @() Remove()
+	sh.good = 1
+}
+
+function spawn_cat()
+{
+	obj_nyan_cat <- Entity()
+	obj_nyan_cat.pos = vec2(NyanCatX, 10.)
+	obj_nyan_cat.gfx = t_nyan_cat
+	obj_nyan_cat.size = vec2(2, 1.2)*1.5
+	obj_nyan_cat.ob_layer = front_layer
+	obj_nyan_cat.pclick <- 0
+	obj_nyan_cat.tick = function()
+	{
+		// 32 - space
+		local click = get_key(1);
+		if(click && !pclick)
+			cat_click();
 	
-	vel += vec2(0,100)*1.5*time_delta
-	if(pos.y>ScreenBottomY)
+		vel += vec2(0,100)*1.5*time_delta
+		if(pos.y>=ScreenBottomY)
+		{
+			pos = vec2(pos.x,ScreenBottomY)
+			vel = vec2(0,0)
+			if (rand() % 30 < 1)
+				cat_click();
+		}
+
+		pclick = click
+		pos = pos + vel * time_delta
+	}
+	obj_nyan_cat.collide = function(otherObj)
 	{
-		pos = vec2(pos.x,ScreenBottomY)
-		vel = vec2(0,0)
+		Remove()
+	}
+	obj_nyan_cat.good = 1
+
+	NyanCatTailObjectHalfSizeX <- 1.0
+
+	obj_nyan_cat.fixedtime = 0.05
+	obj_nyan_cat.fixedtick = function(){
+		local obj = Entity()
+		obj.pos = realpos
+		obj.gfx = t_nyan_cat_tail
+		obj.size = vec2(NyanCatTailObjectHalfSizeX, NyanCatTailObjectHalfSizeX * 0.6)*1.5
+		obj.is_collider = 0
+		obj.ob_layer = bkg_layer
+		obj.tick = function()
+		{
+			pos += vec2(-50,0)*time_delta
+		}
+		obj.fixedtime = 1
+		obj.fixedtick = @()Remove()
+		obj.destroyed = @()1
+		objects.push(obj)
 	}
 
-	pclick = click
-	pos = pos + vel * time_delta
-}
-obj_nyan_cat.collide = function(otherObj)
-{
-	//if(otherObj in RuraObjects)
-	//foreach(ruraObj in RuraObjects)
-	//	if(otherObj == ruraObj)
-	//if(otherObj["isRura"])
-	print("Nyan cat collide" + time + "\n")
-}
-obj_nyan_cat.fixedtime = 0.05
-
-NyanCatTailObjectHalfSizeX <- 1.0
-obj_nyan_cat.fixedtick = function(){
-	local obj = Entity()
-	obj.pos = realpos
-	obj.gfx = t_nyan_cat_tail
-	obj.size = vec2(NyanCatTailObjectHalfSizeX, NyanCatTailObjectHalfSizeX * 0.6)*1.5
-	obj.is_collider = 0
-	obj.ob_layer = bkg_layer
-	obj.tick = function()
-	{
-		pos += vec2(-50,0)*time_delta
-	}
-	obj.fixedtime = 1
-	obj.fixedtick = @()Remove()
-	obj.destroyed = @()1
-	objects.push(obj)
+	objects.push(obj_nyan_cat)
 }
 
-objects.push(obj_nyan_cat)
+
+spawn_cat();
+
+e <- Entity()
+e.is_collider = 0
+e.tick = function() { if(get_stroke(32)) spawn_cat(); }
+objects.push(e)
 
 
 

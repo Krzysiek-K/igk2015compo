@@ -388,8 +388,8 @@ void col_compute()
 			if( b.bmax.x <= a.bmin.x ) continue;
 			if( b.bmax.y <= a.bmin.y ) continue;
 			Collision c;
-			c.id1 = i;
-			c.id2 = j;
+			c.id1 = a.index;
+			c.id2 = b.index;
 			cols.push_back(c);
 		}
 }
@@ -418,6 +418,12 @@ int get_key(int key)
 }
 XSQ_REGISTER_FN(get_key);
 
+/** \brief Get stroke of a key. */
+int get_stroke(int key)
+{
+	return Dev.GetKeyStroke(key) ? 1 : 0;
+}
+XSQ_REGISTER_FN(get_stroke);
 
 
 void DevFrame()

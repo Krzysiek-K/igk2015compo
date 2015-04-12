@@ -40,6 +40,7 @@ for(y<-0;y<3;y++)
 		e.size = vec2(1,1)
 		e.index <- y*2+x*3
 		e.tick = think_invader
+		e.collide = function(o2) { if(o2.good) Remove(); }
 	}
 
 

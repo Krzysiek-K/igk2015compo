@@ -26,6 +26,8 @@ tabclass("Entity",null,{
 	fixedmulti	= 1					// max fixed invoke count per frame
 	_fixcnt		= 0					// counter for fixedtime
 
+	good		= 0
+
 	// ----- updated automatically after tick() -----
 	array_index	= -1				// index in objects[] array
 	realpos		= vec2(0,0)			// realpos = pos + offs
@@ -69,6 +71,8 @@ function _Entity::Remove()
 
 	if(array_index<objects.len())
 		objects[array_index].array_index = array_index
+
+	array_index = -1
 }
 
 
@@ -131,10 +135,10 @@ function tick_all_objects()
 
 	local colid = {}
 	col_clear()
-	foreach(i,e in objects)
+	foreach(e in objects)
 	{
-		e.Collider(i);
-		colid[i] <- e
+		e.Collider(e.array_index);
+		colid[e.array_index] <- e
 	}
 	col_compute()
 
@@ -142,7 +146,7 @@ function tick_all_objects()
 	{
 		local a = colid[col_id1];
 		local b = colid[col_id2];
-		if( a.owner!=b && b.owner!=a )
+		if( a.owner!=b && b.owner!=a && a.good!=b.good )
 		{
 			a.collide(b);
 			b.collide(a);
