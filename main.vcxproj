@@ -135,9 +135,10 @@
     <None Include="render.fx">
       <FileType>Document</FileType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="data\texture.png" />
+    <None Include="WorkDir\api.nut" />
+    <None Include="WorkDir\test.nut" />
+    <None Include="WorkDir\util.nut" />
+    <None Include="WorkDir\vector.nut" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -3,3 +3,4 @@ Debug
 *.suo
 /Release
 *.opensdf
+/WorkDir/device.cfg

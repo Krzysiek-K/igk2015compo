@@ -15,8 +15,11 @@
     <Filter Include="Base">
       <UniqueIdentifier>{968898d6-7bd1-4b90-a0e8-d7fb01efe8c6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scripting">
+    <Filter Include="Squirrel">
       <UniqueIdentifier>{5fe7c372-c7ff-4f8c-ae85-c44e9b42796c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripts">
+      <UniqueIdentifier>{f7380ff7-0e59-42b9-9e5d-fb4f49d0b18b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -78,13 +81,13 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\sqbind.h">
-      <Filter>Scripting</Filter>
+      <Filter>Squirrel</Filter>
     </ClInclude>
     <ClInclude Include="src\squirrel.h">
-      <Filter>Scripting</Filter>
+      <Filter>Squirrel</Filter>
     </ClInclude>
     <ClInclude Include="src\devnut.h">
-      <Filter>Scripting</Filter>
+      <Filter>Squirrel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -155,19 +158,28 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\sqbind.cpp">
-      <Filter>Scripting</Filter>
+      <Filter>Squirrel</Filter>
     </ClCompile>
     <ClCompile Include="src\squirrel.cpp">
-      <Filter>Scripting</Filter>
+      <Filter>Squirrel</Filter>
     </ClCompile>
     <ClCompile Include="src\devnut.cpp">
-      <Filter>Scripting</Filter>
+      <Filter>Squirrel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="render.fx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="data\texture.png" />
+    <None Include="WorkDir\api.nut">
+      <Filter>Scripts</Filter>
+    </None>
+    <None Include="WorkDir\test.nut">
+      <Filter>Scripts</Filter>
+    </None>
+    <None Include="WorkDir\util.nut">
+      <Filter>Scripts</Filter>
+    </None>
+    <None Include="WorkDir\vector.nut">
+      <Filter>Scripts</Filter>
+    </None>
   </ItemGroup>
 </Project>

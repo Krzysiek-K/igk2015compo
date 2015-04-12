@@ -1,0 +1,171 @@
+
+/*** BASIC STYLES ***/
+
+BODY
+{
+	font-size: x-small;
+	margin: 20px;
+	font-family: verdana,arial,helvetica;
+}
+
+A:link { color:#003399; }
+A:visited { color:#660099; }
+A:hover { color:#FF3300; }
+
+P
+{
+	font-size: x-small;
+}
+
+H1
+{
+	font-size:165%;
+	margin:0;
+}
+
+H2
+{
+	font-size:125%;
+	margin-top:1em; margin-bottom:0px;
+}
+
+H3
+{
+	font-size:115%;
+	margin-bottom:0px;
+}
+
+H4, H5, H6
+{
+	font-size:100%;
+	margin-bottom:0px;
+}
+
+UL { margin-left:25px; margin-top:10px; margin-bottom:10px; }
+
+OL { margin-left:25px; margin-top:10px; margin-bottom:10px; }
+
+DD { margin-left:25px; margin-top:10px; margin-bottom:10px; }
+
+DT { margin-left:10px; margin-top:10px; margin-bottom:10px; }
+
+UL LI
+{
+	line-height:1.5em;
+	margin-bottom:0.5em;
+}
+
+UL LI LI { list-style-type: disc; }
+
+
+OL LI { margin-bottom:0.7em; }
+
+TITLE.open
+{
+	font:95%;
+	color:#FFFFFF;
+}
+
+TITLE.closed
+{
+	font:95%;
+	color:#000000;
+}
+
+TABLE
+{
+	table-layout: auto;
+	font-size: 100%;
+	border-collapse: collapse;
+}
+
+TABLE.pageheader
+{
+	border-right: thin solid;
+	table-layout: fixed;
+	border-top: thin solid;
+	font-weight: bold;
+	border-left: thin solid;
+	color: black;
+	border-bottom: thin solid;
+	font-family: Verdana;
+	border-collapse: collapse;
+	background-color: lightgrey;
+}
+
+TD.pageheader
+{
+	left: 20px;
+	text-indent: 10pt;
+}
+
+CODE
+{
+	font-size: 100%;
+	font-family: 'Courier New';
+}
+
+CODE.methodsynopsis
+{
+	margin-top: 15px;
+	display: block;
+	background-color: #e6e6e6;
+}
+
+.programlisting
+{
+	margin-top: 15px;
+	display: block;
+	font-size: 100%;
+	font-family: 'Courier New';
+	background-color: #e6e6e6;
+}
+
+.function
+{
+	font-weight:300;
+	font-size: 100%;
+	font-family: 'Courier New';
+}
+
+.interfacename
+{
+	font-size: 100%;
+	font-family: 'Courier New';
+}
+
+.parameter
+{
+	font-size: 100%;
+	font-family: 'Courier New';
+}
+
+.parameters
+{
+	font-size: 100%;
+	width: 90%;
+	position: relative;
+}
+
+.type
+{
+	font-size: 100%;
+	font-family: 'Courier New';
+}
+
+.methodname
+{
+	font-weight: bold;
+}
+
+.literal 
+{
+	font-size: 100%;
+	font-family: 'Courier New';
+}
+
+.emphasis
+{
+	font-style: italic;
+}
+
