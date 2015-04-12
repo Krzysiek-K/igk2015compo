@@ -17,70 +17,20 @@ tabclass("Entity",null,{
 	_col_next	= null				// do not touch - colision linked list
 })
 
-colision_hash <- {}
-
-
 
 
 function _Entity::Tick()
 {
 	tick()
-
-	// fill collision
-
-	realpos = pos + offs;
-	local h = floor(realpos.x)*15+floor(realpos.y)*101;
-	if( h in colision_hash )
-	{
-		colision_hash[h]._col_next = this
-		_col_next = colision_hash[h]
-	}
-	colision_hash[h] <- this
+	realpos = pos + offs
 }
 
-function _Entity::Collide()
+function _Entity::Collider(id)
 {
-	ColWithHash(realpos-size)
-	ColWithHash(realpos+size)
-	ColWithHash(realpos-vec2(size.x,-size.y))
-	ColWithHash(realpos+vec2(size.x,-size.y))
-		print("--------------\n")
+	local bmin = realpos - size;
+	local bmax = realpos + size;
+	col_box(id,bmin.x,bmin.y,bmax.x,bmax.y)
 }
-
-function _Entity::ColWithHash(ph)
-{
-	local h = floor(ph.x)*15+floor(ph.y)*101;
-	print(h+" ")
-	if( !(h in colision_hash) )
-	{
-		print("-\n")
-		return;
-	}
-	local o2 = colision_hash[h]
-	while(o2)
-	{
-		print(o2)
-		TryCollide(o2);
-		o2 = o2._col_next;
-	}
-	print("\n")
-}
-
-function _Entity::TryCollide(o2)
-{
-	if(o2==this) return;
-	local bmin = realpos - size - o2.size;
-	local bmax = realpos + size + o2.size;
-	if( o2.realpos.x <= bmin.x ) return;
-	if( o2.realpos.y <= bmin.y ) return;
-	if( o2.realpos.x >= bmax.x ) return;
-	if( o2.realpos.y >= bmax.y ) return;
-	color = 0xFF00FF00;
-	o2.color = 0xFF00FF00;
-//	collide(o2)
-//	o2.collide(this)
-}
-
 
 function _Entity::LateTick()
 {
@@ -96,11 +46,29 @@ function _Entity::Draw()
 
 function tick_all_objects()
 {
-	colision_hash <- {}
+	local i;
+
 	foreach(e in objects)	e.color = 0xFFFFFFFF;
 	foreach(e in objects)	e._col_next = null;
 	foreach(e in objects)	e.Tick();
-	foreach(e in objects)	{e.Collide(); break;}
+
+	local colid = {}
+	col_clear()
+	foreach(i,e in objects)
+	{
+		e.Collider(i);
+		colid[i] <- e
+	}
+	col_compute()
+
+	while(col_getcol())
+	{
+		local a = colid[col_id1];
+		local b = colid[col_id2];
+		a.collide(b);
+		b.collide(a);
+	}
+
 	foreach(e in objects)	e.LateTick();
 }
 

@@ -371,7 +371,7 @@ void col_box(int index,float x1,float y1,float x2,float y2)
 	c.index = index;
 	colliders.push_back(c);
 }
-XSQ_REGISTER_FN(col_circle);
+XSQ_REGISTER_FN(col_box);
 
 /** \brief Compute all collisions. */
 void col_compute()
@@ -379,14 +379,14 @@ void col_compute()
 	cols.clear();
 	cols_read = 0;
 	for(int i=0;i<colliders.size();i++)
-		for(int j=0;j<colliders.size();j++)
+		for(int j=i+1;j<colliders.size();j++)
 		{
 			ColObject &a = colliders[i];
 			ColObject &b = colliders[j];
-			if( a.bmax.x < b.bmin.x ) continue;
-			if( a.bmax.y < b.bmin.y ) continue;
-			if( b.bmax.x < a.bmin.x ) continue;
-			if( b.bmax.y < a.bmin.y ) continue;
+			if( a.bmax.x <= b.bmin.x ) continue;
+			if( a.bmax.y <= b.bmin.y ) continue;
+			if( b.bmax.x <= a.bmin.x ) continue;
+			if( b.bmax.y <= a.bmin.y ) continue;
 			Collision c;
 			c.id1 = i;
 			c.id2 = j;
