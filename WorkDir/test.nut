@@ -10,7 +10,10 @@ time <- 0
 
 clear_color <- 0x6080E0
 
-layer <- new_layer(0)
+bkg_layer <- new_layer(0)
+layer <- new_layer(1)
+front_layer <- new_layer(2)
+gui_layer <- new_layer(3)
 
 
 
