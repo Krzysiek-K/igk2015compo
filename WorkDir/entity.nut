@@ -6,27 +6,92 @@ print("======== entity.nut ========\n")
 
 tabclass("Entity",null,{
 	pos			= vec2(0,0)
-	realpos		= vec2(0,0)			// realpos = pos + offs		(recomputed after every tick)
 	size		= vec2(1,1)/2
 	offs		= vec2(0,0)			// object offset from position
 	gfx			= t_invader
+	angle		= 0					// draw rotation (in revolutions)
 	color		= 0xFFFFFFFF
-	tick		= function(){}		// ran before collision tests
-	latetick	= function(){}		// ran after collision tests
-	collide		= function(o2){}	// called every collision frame
-	_col_next	= null				// do not touch - colision linked list
+	tick		= @()0				// ran before collision tests
+	latetick	= @()0				// ran after collision tests
+	collide		= @(o2)0			// called every collision frame
+	kill		= @(killer)0		// called when something attempts to kill me
+	destroyed	= @()_defdestr()	// called just before being removed (return 0 to prevent)
+	is_collider	= 1
+	ob_layer	= layer
+
+	fixedtick	= @()0				// ran at constant intervals (always before tick())
+	fixedtime	= 0					// if>0 then runs fixedtick() at that intervals
+	_fixcnt		= 0					// counter for fixedtime
+
+	// ----- updated automatically after tick() -----
+	array_index	= -1				// index in objects[] array
+	realpos		= vec2(0,0)			// realpos = pos + offs
 })
 
 
 
+function _dim()
+{
+	killtime += time_delta
+	size = size1*(1+killtime*10)
+	angle += time_delta*1.5
+	if(killtime>0.25)
+		Remove();
+}
+
+function _defdestr()
+{
+	size1 <- size
+	killtime <- 0
+	tick		= _dim
+	latetick	= @()0
+	collide		= @(o2)0
+	kill		= @()0
+	destroyed	= @()1
+	fixedtick	= @()0
+	is_collider	= 0
+	return 0;
+}
+
+
+
+function _Entity::Remove()
+{
+	if(array_index<0) return;
+	if(!destroyed()) return;
+
+	objects[array_index] = objects.top();
+	objects.pop();
+
+	if(array_index<objects.len())
+		objects[array_index].array_index = array_index
+}
+
+
 function _Entity::Tick()
 {
+	if(fixedtime>0)
+	{
+		if(fixedtime<_fixcnt)
+			fixedtime = _fixcnt;
+
+		_fixcnt -= time_delta
+		if(_fixcnt<=0)
+		{
+			_fixcnt = fixedtime
+			fixedtick()
+		}
+	}
+	else
+		_fixcnt = 0
+
 	tick()
 	realpos = pos + offs
 }
 
 function _Entity::Collider(id)
 {
+	if(!is_collider) return;
 	local bmin = realpos - size;
 	local bmax = realpos + size;
 	col_box(id,bmin.x,bmin.y,bmax.x,bmax.y)
@@ -40,7 +105,7 @@ function _Entity::LateTick()
 
 function _Entity::Draw()
 {
-	layer.sprite(gfx,color,pos+offs,size,0);
+	ob_layer.sprite(gfx,color,pos+offs,size,angle);
 }
 
 
@@ -49,8 +114,11 @@ function tick_all_objects()
 	local i;
 
 	foreach(e in objects)	e.color = 0xFFFFFFFF;
-	foreach(e in objects)	e._col_next = null;
-	foreach(e in objects)	e.Tick();
+	foreach(i,e in objects)
+	{
+		e.Tick();
+		e.array_index = i;
+	}
 
 	local colid = {}
 	col_clear()

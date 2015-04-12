@@ -8,6 +8,8 @@ time <- 0
 
 // ------------ layers ------------
 
+clear_color <- 0x6080E0
+
 layer <- new_layer(0)
 
 
@@ -38,8 +40,6 @@ function frame()
 
 	tick_all_objects()
 	draw_all_objects()
-
-//	layer.sprite(texid,0xFFFFFFFF,vec2(40,30)/2,vec2(1,1),time);
 }
 
 

@@ -22,7 +22,7 @@ DevCanvas canvas(CLD);
 void Render()
 {
 	// clear
-	Dev->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER | D3DCLEAR_STENCIL, 0x6080E0, 1, 0);
+	Dev->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER | D3DCLEAR_STENCIL, vm.GetInt("clear_color"), 1, 0);
 
 	DevFrame();
 }
