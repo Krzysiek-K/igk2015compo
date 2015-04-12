@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{dbd82d66-c484-4f36-a259-6368a32190dd}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>main</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>.;./base;./dxfw;./src</AdditionalIncludeDirectories>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>.;./base;./dxfw;./src</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="base\base.h" />
+    <ClInclude Include="base\base\cfg_parser.h" />
+    <ClInclude Include="base\base\chunkfile.h" />
+    <ClInclude Include="base\base\config.h" />
+    <ClInclude Include="base\base\convert.h" />
+    <ClInclude Include="base\base\convert2.h" />
+    <ClInclude Include="base\base\logger.h" />
+    <ClInclude Include="base\base\math.h" />
+    <ClInclude Include="base\base\md5.h" />
+    <ClInclude Include="base\base\midiinout.h" />
+    <ClInclude Include="base\base\smartptr.h" />
+    <ClInclude Include="base\base\streams.h" />
+    <ClInclude Include="base\base\strings.h" />
+    <ClInclude Include="base\base\tracked.h" />
+    <ClInclude Include="base\base\treefile.h" />
+    <ClInclude Include="base\base\types.h" />
+    <ClInclude Include="base\base\vfs.h" />
+    <ClInclude Include="dxfw\dxfw.h" />
+    <ClInclude Include="src\common.h" />
+    <ClInclude Include="src\devnut.h" />
+    <ClInclude Include="src\sqbind.h" />
+    <ClInclude Include="src\squirrel.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="base\cfg_parser.cpp" />
+    <ClCompile Include="base\chunkfile.cpp" />
+    <ClCompile Include="base\config.cpp" />
+    <ClCompile Include="base\convert.cpp" />
+    <ClCompile Include="base\convert_append.cpp" />
+    <ClCompile Include="base\convert_parse.cpp" />
+    <ClCompile Include="base\md5.cpp" />
+    <ClCompile Include="base\midiinout.cpp" />
+    <ClCompile Include="base\streams.cpp" />
+    <ClCompile Include="base\strings.cpp" />
+    <ClCompile Include="base\treefile.cpp" />
+    <ClCompile Include="base\vfs.cpp" />
+    <ClCompile Include="dxfw\device.cpp" />
+    <ClCompile Include="dxfw\d_canvas.cpp" />
+    <ClCompile Include="dxfw\d_effect.cpp" />
+    <ClCompile Include="dxfw\d_formats.cpp" />
+    <ClCompile Include="dxfw\d_mesh.cpp" />
+    <ClCompile Include="dxfw\d_resources.cpp" />
+    <ClCompile Include="dxfw\d_shaderset.cpp" />
+    <ClCompile Include="dxfw\d_texture.cpp" />
+    <ClCompile Include="dxfw\d_txfont.cpp" />
+    <ClCompile Include="src\devnut.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\sqbind.cpp" />
+    <ClCompile Include="src\squirrel.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="render.fx">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="data\texture.png" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

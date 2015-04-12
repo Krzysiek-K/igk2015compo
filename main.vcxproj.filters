@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Dxfw">
+      <UniqueIdentifier>{2a4c4b5c-2f20-44db-9a73-3a0f5dba3cbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Base">
+      <UniqueIdentifier>{968898d6-7bd1-4b90-a0e8-d7fb01efe8c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripting">
+      <UniqueIdentifier>{5fe7c372-c7ff-4f8c-ae85-c44e9b42796c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="base\base\cfg_parser.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\base\chunkfile.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\base\config.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\base\convert.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\base\convert2.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\base\logger.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\base\math.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\base\md5.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\base\midiinout.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\base\smartptr.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\base\streams.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\base\strings.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\base\tracked.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\base\treefile.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\base\types.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\base\vfs.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="base\base.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="dxfw\dxfw.h">
+      <Filter>Dxfw</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sqbind.h">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="src\squirrel.h">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+    <ClInclude Include="src\devnut.h">
+      <Filter>Scripting</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="base\cfg_parser.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\chunkfile.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\config.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\convert.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\convert_append.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\convert_parse.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\md5.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\midiinout.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\streams.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\strings.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\treefile.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="base\vfs.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="dxfw\d_canvas.cpp">
+      <Filter>Dxfw</Filter>
+    </ClCompile>
+    <ClCompile Include="dxfw\d_effect.cpp">
+      <Filter>Dxfw</Filter>
+    </ClCompile>
+    <ClCompile Include="dxfw\d_formats.cpp">
+      <Filter>Dxfw</Filter>
+    </ClCompile>
+    <ClCompile Include="dxfw\d_mesh.cpp">
+      <Filter>Dxfw</Filter>
+    </ClCompile>
+    <ClCompile Include="dxfw\d_resources.cpp">
+      <Filter>Dxfw</Filter>
+    </ClCompile>
+    <ClCompile Include="dxfw\d_shaderset.cpp">
+      <Filter>Dxfw</Filter>
+    </ClCompile>
+    <ClCompile Include="dxfw\d_texture.cpp">
+      <Filter>Dxfw</Filter>
+    </ClCompile>
+    <ClCompile Include="dxfw\d_txfont.cpp">
+      <Filter>Dxfw</Filter>
+    </ClCompile>
+    <ClCompile Include="dxfw\device.cpp">
+      <Filter>Dxfw</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sqbind.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="src\squirrel.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+    <ClCompile Include="src\devnut.cpp">
+      <Filter>Scripting</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="render.fx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="data\texture.png" />
+  </ItemGroup>
+</Project>
