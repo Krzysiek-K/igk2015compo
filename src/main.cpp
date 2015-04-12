@@ -1,5 +1,6 @@
 
 #include "common.h"
+#include "FmodSound.hpp"
 
 
 //	DevEffect	*fx;
@@ -32,6 +33,8 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR pCmdLine, int nSh
 {
 	Dev.SetConfig("device.cfg");
 	Dev.SetResolution(640, 480, false);
+	Sound::g_System = new Sound::System();
+	//Sound::g_System->StartMusic("d:\\MP3\\Moshic\\Moshic_Feat_Sari_come_home_with_me_album_version_radio(4_10min).mp3", true);
 	Dev.Init();
 	Dev.MainLoop();
 
@@ -54,7 +57,10 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR pCmdLine, int nSh
 
 		// render
 		Render();
+
+		Sound::g_System->Update();
 	}
 
+	delete Sound::g_System;
 	return 0;
 }
