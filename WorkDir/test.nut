@@ -49,4 +49,29 @@ function frame()
 }
 
 
+
+tabclass("Mouse",null,{
+	pos			= vec2(0,0)
+	delta		= vec2(0,0)
+	id			= -1
+}
+
+
+mice <- {}
+
+
+function mouse_update_pos(id,dx,dy,dz)
+{
+	if(!(id in mice)) mice[id] <- Mouse();
+	mice[id].delta += vec2(dx,dy);
+}
+
+function mouse_update_buttons(id,click,down)
+{
+	if(!(id in mice)) mice[id] <- Mouse();
+}
+
+
+
+
 script_add("priv.nut")

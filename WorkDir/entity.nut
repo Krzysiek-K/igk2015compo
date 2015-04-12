@@ -22,6 +22,7 @@ tabclass("Entity",null,{
 
 	fixedtick	= @()0				// ran at constant intervals (always before tick())
 	fixedtime	= 0					// if>0 then runs fixedtick() at that intervals
+	fixedmulti	= 1					// max fixed invoke count per frame
 	_fixcnt		= 0					// counter for fixedtime
 
 	// ----- updated automatically after tick() -----
@@ -30,12 +31,14 @@ tabclass("Entity",null,{
 })
 
 
-
 function _dim()
 {
 	killtime += time_delta
 	size = size1*(1+killtime*10)
 	angle += time_delta*1.5
+
+	color = (color&0xFFFFFF) | ((255-killtime/0.25*255).tointeger()*0x01000000)
+
 	if(killtime>0.25)
 		Remove();
 }
@@ -49,7 +52,6 @@ function _defdestr()
 	collide		= @(o2)0
 	kill		= @()0
 	destroyed	= @()1
-	fixedtick	= @()0
 	is_collider	= 0
 	return 0;
 }
@@ -76,12 +78,17 @@ function _Entity::Tick()
 		if(fixedtime<_fixcnt)
 			fixedtime = _fixcnt;
 
+		local invokes = fixedmulti;
+
 		_fixcnt -= time_delta
-		if(_fixcnt<=0)
+		while(_fixcnt<=0 && invokes>0)
 		{
-			_fixcnt = fixedtime
+			invokes--
+			_fixcnt += fixedtime
 			fixedtick()
 		}
+		if(_fixcnt<0)
+			_fixcnt = 0;
 	}
 	else
 		_fixcnt = 0
