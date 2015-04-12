@@ -5,3 +5,4 @@ Debug
 *.opensdf
 /WorkDir/device.cfg
 *.ilk
+/WorkDir/priv.nut
