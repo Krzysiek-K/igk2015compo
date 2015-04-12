@@ -3,8 +3,6 @@
 objects <- []
 
 
-clear_color <- 0x6080E0
-
 
 
 for(i<-0;i<20;i++)

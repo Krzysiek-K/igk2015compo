@@ -22,7 +22,7 @@ function think_invader()
 				Remove() 
 		}
 	}
-	pos += vec2(-5,0)*time_delta;
+	pos += vec2(-10,0)*time_delta;
 	if(pos.x<0)
 		Remove();
 }
@@ -31,17 +31,23 @@ function think_invader()
 
 // --------------------------------
 
-for(y<-0;y<3;y++)
-	for(x<-0;x<5;x++)
-	{
-		objects.push(e<-Entity())
 
-		e.pos = vec2(x * 5 + 45, y * 8 + 5)
-		e.size = vec2(1,1)
-		e.index <- y*2+x*3
-		e.tick = think_invader
-		e.collide = function(o2) { if(o2.good) Remove(); }
-	}
+function wave_invader()
+{
+	for(y<-0;y<3;y++)
+		for(x<-0;x<5;x++)
+		{
+			objects.push(e<-Entity())
+
+			e.pos = vec2(x * 5 + 45, y * 8 + 5)
+			e.size = vec2(1,1)
+			e.index <- y*2+x*3
+			e.tick = think_invader
+			e.collide = function(o2) { if(o2.good) Remove(); }
+			e.enem = 1
+			e.points = 25
+		}
+}
 
 
 

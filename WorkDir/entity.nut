@@ -27,6 +27,9 @@ tabclass("Entity",null,{
 	_fixcnt		= 0					// counter for fixedtime
 
 	good		= 0
+	enem		= 0
+	cat			= 0
+	points		= 0
 
 	// ----- updated automatically after tick() -----
 	array_index	= -1				// index in objects[] array
@@ -73,6 +76,7 @@ function _Entity::Remove()
 		objects[array_index].array_index = array_index
 
 	array_index = -1
+	score += points
 }
 
 
@@ -113,6 +117,11 @@ function _Entity::Collider(id)
 function _Entity::LateTick()
 {
 	latetick()
+	realpos = pos + offs
+
+	if( realpos.x<0-20 || realpos.y<0-20 ||
+		realpos.x>40+250 || realpos.y>30+20 )
+		Remove();
 }
 
 
@@ -126,7 +135,6 @@ function tick_all_objects()
 {
 	local i;
 
-	foreach(e in objects)	e.color = 0xFFFFFFFF;
 	foreach(i,e in objects)
 	{
 		e.Tick();

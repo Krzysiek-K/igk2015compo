@@ -205,5 +205,8 @@
     <None Include="WorkDir\spc_inv.nut">
       <Filter>Scripts</Filter>
     </None>
+    <None Include="WorkDir\mastermind.nut">
+      <Filter>Scripts</Filter>
+    </None>
   </ItemGroup>
 </Project>

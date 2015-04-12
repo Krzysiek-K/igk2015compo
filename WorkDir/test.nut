@@ -4,6 +4,7 @@ print("Hello World!\n");
 
 
 time <- 0
+score <- 0
 
 
 // ------------ layers ------------
@@ -25,6 +26,16 @@ t_invader		<- tex_load("data/invader.png")
 t_nyan_cat		<- tex_load("data/Nyan Cat.png")
 t_nyan_cat_tail	<- tex_load("data/Nyan Cat Tail.png")
 t_rura			<- tex_load("data/Rura.png")
+t_pac1			<- tex_load("data/Pacman Open.png")
+t_pac2			<- tex_load("data/Pacman Closed.png")
+t_cloud			<- tex_load("data/cloud.png")
+t_grass			<- tex_load("data/grass.png")
+t_ground		<- tex_load("data/ground.png")
+t_pong			<- tex_load("data/pong.png")
+t_gh1			<- tex_load("data/Pacman Ghost 1.png")
+t_gh2			<- tex_load("data/Pacman Ghost 2.png")
+t_gh3			<- tex_load("data/Pacman Ghost 3.png")
+t_gh4			<- tex_load("data/Pacman Ghost 4.png")
 
 
 
