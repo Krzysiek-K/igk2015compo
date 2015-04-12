@@ -14,10 +14,11 @@ tabclass("Entity",null,{
 	tick		= @()0				// ran before collision tests
 	latetick	= @()0				// ran after collision tests
 	collide		= @(o2)0			// called every collision frame
-	kill		= @(killer)0		// called when something attempts to kill me
+	kill		= @(killer)Remove()	// called when something attempts to kill me
 	destroyed	= @()_defdestr()	// called just before being removed (return 0 to prevent)
 	is_collider	= 1
 	ob_layer	= layer
+	owner		= null
 
 	fixedtick	= @()0				// ran at constant intervals (always before tick())
 	fixedtime	= 0					// if>0 then runs fixedtick() at that intervals
@@ -133,8 +134,11 @@ function tick_all_objects()
 	{
 		local a = colid[col_id1];
 		local b = colid[col_id2];
-		a.collide(b);
-		b.collide(a);
+		if( a.owner!=b && b.owner!=a )
+		{
+			a.collide(b);
+			b.collide(a);
+		}
 	}
 
 	foreach(e in objects)	e.LateTick();
