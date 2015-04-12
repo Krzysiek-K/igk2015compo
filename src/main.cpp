@@ -2,6 +2,19 @@
 #include "common.h"
 
 
+//	DevEffect	*fx;
+//	const char	*shader;			// technique name or microshader
+//	int			rstate;
+//	int			sampler_0;
+//  void		(*fn_before)();
+//  void		(*fn_after)();
+CanvasLayerDesc CLD[] = {
+	{0,"",0,0,NULL,NULL},
+	{}
+};
+
+
+DevCanvas canvas;
 
 
 
@@ -10,6 +23,7 @@ void Render()
 	// clear
 	Dev->Clear(0, NULL, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER | D3DCLEAR_STENCIL, 0x6080E0, 1, 0);
 
+	DevFrame();
 }
 
 

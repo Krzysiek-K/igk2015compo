@@ -166,6 +166,9 @@
     <ClCompile Include="src\devnut.cpp">
       <Filter>Squirrel</Filter>
     </ClCompile>
+    <ClCompile Include="src\devlayers.cpp">
+      <Filter>Squirrel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="render.fx" />

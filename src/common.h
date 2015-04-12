@@ -7,3 +7,14 @@
 
 using namespace std;
 using namespace base;
+
+
+// devlayers.cpp
+
+void DevFrame();
+
+
+
+// main.cpp
+
+extern DevCanvas canvas;

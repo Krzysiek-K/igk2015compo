@@ -1,4 +1,4 @@
-// ---------------- Library -- generated on 7.4.2015  4:01 ----------------
+// ---------------- Library -- generated on 12.4.2015  10:58 ----------------
 
 
 
@@ -1524,7 +1524,6 @@ void SqVM::Init(int stack_size)
 	last_stack_size = stack_size;
 
 	DeInit();
-	if(vm) sq_close(vm);
 
     vm = sq_open(stack_size);
 	sq_setforeignptr(vm,this);

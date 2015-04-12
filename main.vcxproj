@@ -126,6 +126,7 @@
     <ClCompile Include="dxfw\d_shaderset.cpp" />
     <ClCompile Include="dxfw\d_texture.cpp" />
     <ClCompile Include="dxfw\d_txfont.cpp" />
+    <ClCompile Include="src\devlayers.cpp" />
     <ClCompile Include="src\devnut.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\sqbind.cpp" />
