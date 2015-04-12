@@ -43,7 +43,7 @@ player.tick = function(){
 	{
 		player.pos += vec2(time_delta, 0)
 	}
-	if (get_key(32) && bullet.active == 0) //space 
+	if (get_key(1) && bullet.active == 0) // 32 - space 
 	{
 		bullet.pos = player.pos 
 		bullet.active = 1

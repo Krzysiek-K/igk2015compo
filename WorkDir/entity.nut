@@ -6,6 +6,7 @@ print("======== entity.nut ========\n")
 
 tabclass("Entity",null,{
 	pos			= vec2(0,0)
+	vel			= vec2(0,0)
 	size		= vec2(1,1)/2
 	offs		= vec2(0,0)			// object offset from position
 	gfx			= t_invader

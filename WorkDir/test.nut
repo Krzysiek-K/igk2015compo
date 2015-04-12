@@ -42,7 +42,7 @@ function frame()
 {
 	time += time_delta
 
-	set_view(40/2,20/2,20)
+	set_view(40/2,30/2,30)
 
 	tick_all_objects()
 	draw_all_objects()
@@ -54,22 +54,22 @@ tabclass("Mouse",null,{
 	pos			= vec2(0,0)
 	delta		= vec2(0,0)
 	id			= -1
-}
+})
 
 
-mice <- {}
-
-
-function mouse_update_pos(id,dx,dy,dz)
-{
-	if(!(id in mice)) mice[id] <- Mouse();
-	mice[id].delta += vec2(dx,dy);
-}
-
-function mouse_update_buttons(id,click,down)
-{
-	if(!(id in mice)) mice[id] <- Mouse();
-}
+//mice <- {}
+//
+//
+//function mouse_update_pos(id,dx,dy,dz)
+//{
+//	if(!(id in mice)) mice[id] <- Mouse();
+//	mice[id].delta += vec2(dx,dy);
+//}
+//
+//function mouse_update_buttons(id,click,down)
+//{
+//	if(!(id in mice)) mice[id] <- Mouse();
+//}
 
 
 

@@ -3,26 +3,35 @@ print("Priv Hello!\n")
 objects <- []
 clear_color = 0x003068
 
-ScreenLeftX <- 6.6
-ScreenRightX <- 33.3
+ScreenLeftX <- 0.0
+ScreenRightX <- 40.0
 ScreenTopY <- 0.0
-ScreenBottomY <- 20.0
+ScreenBottomY <- 30.0
 
-NyanCatX <- 12.0
+NyanCatX <- ScreenLeftX+5
 
 obj_nyan_cat <- Entity()
 obj_nyan_cat.pos = vec2(NyanCatX, 10.)
 obj_nyan_cat.gfx = t_nyan_cat
-obj_nyan_cat.size = vec2(2, 1.2)
+obj_nyan_cat.size = vec2(2, 1.2)*1.5
 obj_nyan_cat.ob_layer = front_layer
+obj_nyan_cat.pclick <- 0
 obj_nyan_cat.tick = function()
 {
-	local v = vec2(0., 0.)
-	if(get_key(32))
-		v = vec2(0, -12) // Acceleration up.
-	else
-		v = vec2(0, 7) // Gravity.
-	pos = pos + v * time_delta
+	// 32 - space
+	local click = get_key(1);
+	if(click && !pclick)
+		vel = vec2(0,-30)*1.5
+	
+	vel += vec2(0,100)*1.5*time_delta
+	if(pos.y>ScreenBottomY)
+	{
+		pos = vec2(pos.x,ScreenBottomY)
+		vel = vec2(0,0)
+	}
+
+	pclick = click
+	pos = pos + vel * time_delta
 }
 obj_nyan_cat.collide = function(otherObj)
 {
@@ -77,7 +86,7 @@ function PositionRuras(ruraUp, ruraDown)
 	ruraDown.size = vec2(ruraDown.size.x, -halfSizeY)
 }
 
-RuraSpeed <- 6.0
+RuraSpeed <- 20.0
 RuraColumnCount <- 2
 RuraObjects <- []
 RuraStepX <- (ScreenRightX - ScreenLeftX) / RuraColumnCount
