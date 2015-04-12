@@ -11,6 +11,9 @@
 //  void		(*fn_after)();
 CanvasLayerDesc CLD[] = {
 	{0,"if(t.x>.9 && t.y<.1 && t.z>.9) o.w=0;",RSF_BLEND_ALPHA,0,NULL,NULL},
+	{0,"if(t.x>.9 && t.y<.1 && t.z>.9) o.w=0;",RSF_BLEND_ALPHA,0,NULL,NULL},
+	{0,"if(t.x>.9 && t.y<.1 && t.z>.9) o.w=0;",RSF_BLEND_ALPHA,0,NULL,NULL},
+	{0,"if(t.x>.9 && t.y<.1 && t.z>.9) o.w=0;",RSF_BLEND_ALPHA,0,NULL,NULL},
 	{}
 };
 
